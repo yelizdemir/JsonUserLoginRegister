@@ -59,9 +59,9 @@ public class LoginPage extends AppCompatActivity
                 }
                 else {
                     url = "http://jsonbulut.com/json/userLogin.php?ref=cb226ff2a31fdd460087fedbb34a6023&" +
-                            "userEmail=" + mail + "&" +
-                            "userPass=" + pass + "&" +
-                            "face=no";
+                            "userEmail=" + mail +
+                            "&userPass=" + pass +
+                            "&face=no";
 
                     new jsonData(url, LoginPage.this).execute();
 
