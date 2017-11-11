@@ -30,7 +30,7 @@ public class LoginPage extends AppCompatActivity
         setContentView(R.layout.login_page);
 
         etmail=(EditText) findViewById(R.id.etmail);
-        etpass=(EditText) findViewById(R.id.et_pass);
+        etpass=(EditText) findViewById(R.id.etpass);
         buttonlogin=(Button) findViewById(R.id.button_login);
         buttongotoregister=(Button) findViewById(R.id.button_gotoregister);
 
@@ -47,8 +47,10 @@ public class LoginPage extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+
                 final String mail = etmail.getText().toString();
-                final  String pass = etpass.getText().toString();
+                String pass = etpass.getText().toString();
+
                 if (mail.equals(""))
                 {
                     Toast.makeText(LoginPage.this, "Mail giriniz", Toast.LENGTH_SHORT).show();
@@ -65,8 +67,8 @@ public class LoginPage extends AppCompatActivity
 
                     new jsonData(url, LoginPage.this).execute();
 
-                    Intent i = new Intent(LoginPage.this, ProfilePage.class);
-                    startActivity(i);
+                    Intent intent = new Intent(LoginPage.this, ProfilePage.class);
+                    startActivity(intent);
 
                 }
             }
@@ -104,7 +106,7 @@ public class LoginPage extends AppCompatActivity
                 JSONObject object = new JSONObject(dataLogin);
                 boolean durum = object.getJSONArray("user").getJSONObject(0).getBoolean("durum");
                 String mesaj = object.getJSONArray("user").getJSONObject(0).getString("mesaj");
-                if(durum)
+                if(durum==true)
                 {
 
                     Toast.makeText(cnx, mesaj, Toast.LENGTH_SHORT).show();
