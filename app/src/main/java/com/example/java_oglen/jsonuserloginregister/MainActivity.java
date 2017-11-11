@@ -2,6 +2,7 @@ package com.example.java_oglen.jsonuserloginregister;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -144,6 +145,8 @@ public class MainActivity extends AppCompatActivity
                     Toast.makeText(cnx,mesaj,Toast.LENGTH_LONG).show();
                     String kid=obj.getJSONArray("user").getJSONObject(0).getString("kullaniciId");
                     Log.d("kid",kid);
+                    Intent i= new Intent(MainActivity.this, LoginPage.class);
+                    startActivity(i);
                 }
 
                 else

@@ -4,6 +4,7 @@ package com.example.java_oglen.jsonuserloginregister;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,23 +21,39 @@ import org.jsoup.Jsoup;
 public class LoginPage extends AppCompatActivity
 
 {
+    static SharedPreferences sha;
+    static SharedPreferences.Editor edit;
+
     EditText etmail, etpass;
     Button buttonlogin, buttongotoregister;
     String url = "";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
 
         etmail=(EditText) findViewById(R.id.etmail);
         etpass=(EditText) findViewById(R.id.etpass);
         buttonlogin=(Button) findViewById(R.id.button_login);
+        sha=getSharedPreferences("urun", Context.MODE_PRIVATE);
+        edit=sha.edit();
+        String kulId= sha.getString("kid","");
+
+        if (!kulId.equals(""))
+        {
+            Intent i= new Intent(LoginPage.this, ProfilePage.class);
+            i.putExtra("kulId",kulId);
+            startActivity(i);
+
+        }
         buttongotoregister=(Button) findViewById(R.id.button_gotoregister);
 
         buttongotoregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent i=new Intent(LoginPage.this, MainActivity.class);
                 startActivity(i);
                 finish();
@@ -49,7 +66,7 @@ public class LoginPage extends AppCompatActivity
             {
 
                 final String mail = etmail.getText().toString();
-                String pass = etpass.getText().toString();
+                final String pass = etpass.getText().toString();
 
                 if (mail.equals(""))
                 {
@@ -110,8 +127,13 @@ public class LoginPage extends AppCompatActivity
                 {
 
                     Toast.makeText(cnx, mesaj, Toast.LENGTH_SHORT).show();
-                    String userInfo = object.getJSONArray("user").getJSONObject(0).getString("bilgiler");
-                    Log.d("USER INFO: ", userInfo);
+                    String kid = object.getJSONArray("user").getJSONObject(0).getJSONObject("bilgiler").getString("userId");
+                    Log.d("kid = ", kid);
+                    LoginPage.edit.putString("kid", kid);
+                   LoginPage.edit.commit();
+
+                    Intent i= new Intent(cnx, ProfilePage.class);
+                    cnx.startActivity(i);
                 }
                 else
                 {
