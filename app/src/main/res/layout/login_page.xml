@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kullanıcı Giriş Yap"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textStyle="bold"/>
 
     <EditText
         android:layout_marginLeft="5dp"
@@ -24,21 +32,35 @@
         android:hint="Password"
         android:id="@+id/etpass" />
 
-    <Button
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:text="Login"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button_login" />
+        android:orientation="horizontal">
+
+
 
     <Button
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
-        android:text="Go to Register"
-        android:layout_width="match_parent"
+        android:text="kAYIT OL"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button_gotoregister" />
+        android:id="@+id/button_gotoregister"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <Button
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:text="GİRİŞ YAP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_login" />
+
+    </LinearLayout>
 </LinearLayout>

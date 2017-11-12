@@ -8,6 +8,15 @@
     tools:context="com.example.java_oglen.jsonuserloginregister.MainActivity">
 
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kullanıcı Kayıt"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textStyle="bold"/>
+
     <EditText
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
@@ -58,13 +67,36 @@
         android:inputType="textPassword"
         android:hint="Password"/>
 
-
-    <Button
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:id="@+id/button_kayit"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_gotogiris"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:text="GİRİŞ YAP"
+            android:onClick="Giris"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/button_kayit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:text="KAYIT YAP"
+            />
+
+    </LinearLayout>
 </LinearLayout>

@@ -87,7 +87,11 @@ public class MainActivity extends AppCompatActivity
         });
 
 
+    }
 
+    public void Giris(View view) {
+        Intent i= new Intent(MainActivity.this,LoginPage.class);
+        startActivity(i);
     }
 
     class jsonData extends AsyncTask<Void, Void, Void>

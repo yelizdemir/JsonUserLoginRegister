@@ -84,8 +84,8 @@ public class LoginPage extends AppCompatActivity
 
                     new jsonData(url, LoginPage.this).execute();
 
-                    Intent intent = new Intent(LoginPage.this, ProfilePage.class);
-                    startActivity(intent);
+                  /*  Intent intent = new Intent(LoginPage.this, ProfilePage.class);
+                    startActivity(intent);*/
 
                 }
             }
@@ -128,11 +128,18 @@ public class LoginPage extends AppCompatActivity
 
                     Toast.makeText(cnx, mesaj, Toast.LENGTH_SHORT).show();
                     String kid = object.getJSONArray("user").getJSONObject(0).getJSONObject("bilgiler").getString("userId");
+                    String kAd = object.getJSONArray("user").getJSONObject(0).getJSONObject("bilgiler").getString("userName");
+                    String kSoyad = object.getJSONArray("user").getJSONObject(0).getJSONObject("bilgiler").getString("userSurname");
                     Log.d("kid = ", kid);
+
                     LoginPage.edit.putString("kid", kid);
-                   LoginPage.edit.commit();
+                    LoginPage.edit.putString("userName", kAd);
+                    LoginPage.edit.putString("userSurname", kSoyad);
+                    LoginPage.edit.commit();
 
                     Intent i= new Intent(cnx, ProfilePage.class);
+                    i.putExtra("kAd", kAd);
+                    i.putExtra("kSoyad", kSoyad);
                     cnx.startActivity(i);
                 }
                 else

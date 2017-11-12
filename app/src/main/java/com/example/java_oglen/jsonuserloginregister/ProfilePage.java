@@ -18,6 +18,7 @@ public class ProfilePage extends AppCompatActivity
 
     TextView txt;
     Button cikis;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -25,9 +26,14 @@ public class ProfilePage extends AppCompatActivity
         setContentView(R.layout.profile_page);
         txt=(TextView)  findViewById(R.id.textView);
         cikis= (Button) findViewById(R.id.cikis_yap);
+        txt=(TextView) findViewById(R.id.textView);
 
         sp=getSharedPreferences("urun", Context.MODE_PRIVATE);
         edit=sp.edit();
+
+        String ad=sp.getString("userName","");
+        String soyad=sp.getString("userSurname","");
+        txt.setText("Hoş Geldiniz, "+ad+" "+soyad);
 
         cikis.setOnClickListener(new View.OnClickListener() {
             @Override
